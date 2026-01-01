@@ -1,0 +1,33 @@
+i have to create 2 tables
+1 --> username, password, userid(auto_increment)
+2 --> accountid, balance, foreign key userid reference 1(userid)
+
+for 1-> we will create username and password userid will be assigned automatically which we will give them.
+
+for 2-> we will update the balance with reference to userid.
+
+/* 
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE accounts (
+    account_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    balance DECIMAL(15,2) DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+INSERT INTO accounts (user_id, balance)
+VALUES (1, 5000);
+
+*/
+
+when user enters name and password db should get connected to that account. and then it should perform actions to that account.
+1- logs in
+2- userid --we have, connect with database.
+
+userid--

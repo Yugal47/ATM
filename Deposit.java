@@ -1,0 +1,34 @@
+package com.ATM;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
+
+public class Deposit {
+    public void deposit() throws Exception{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter User Id:");
+        int userid= sc.nextInt();//-->connects with that table
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
+        PreparedStatement ps1= con.prepareStatement("select * from users where user_id = ?");
+        ps1.setInt(1, userid);
+        ResultSet rs =ps1.executeQuery();
+        if(rs.next()){
+            System.out.println("Enter amount:");
+            int amount= sc.nextInt();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO atm (user_id, balance) VALUES (?, ?) ON DUPLICATE KEY UPDATE balance = balance + VALUES(balance);");
+            ps.setInt(1,userid);
+            ps.setInt(2,amount);
+            int i = ps.executeUpdate();
+            if(i>0){
+                System.out.println("Successfully added amount: "+ amount);
+            }
+            else{
+                System.out.println("Failed to Deposit");
+            }
+        }
+    }
+}
