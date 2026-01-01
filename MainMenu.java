@@ -1,25 +1,10 @@
 package com.ATM;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.util.Scanner;
 public class MainMenu {
     
-    public int Balance=1000;
-    
-    public int getBalance() {
-        return Balance;
-    }
-    public void setBalance(int Balance) {
-        this.Balance = Balance;
-    }
+    public int Balance=0;
     int menu;
     public void mainMenu() throws Exception{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
-        // PreparedStatement ps = con.prepareStatement("INSERT INTO ATM VALUES(?)");
-        // ps.setInt(1,Balance);
         while(true){
         Scanner sc = new Scanner(System.in);
         System.out.println("1. Withdraw");
@@ -38,7 +23,7 @@ public class MainMenu {
                 break;
             case 3:
                 CheckBal cb = new CheckBal();                
-                cb.checkBal(this);
+                cb.checkBal();
                 break;
             case 4:
                 System.out.println("Exit");
@@ -58,7 +43,7 @@ public class MainMenu {
         e.printStackTrace();
     }
     System.out.println("done");
-    // me.mainMenu();        
+       
 
     }
 }

@@ -5,27 +5,40 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 public class Withdraw {
-    
+    Login log =new Login();
     public void debit() throws Exception{
         Scanner sc =new Scanner(System.in);
         System.out.println("Enter Amout:");
         int amount = sc.nextInt();
         int bal=0;
-
+        int userid=log.getUserid();
+        System.out.println(userid);
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
-        String RdSql="SELECT*FROM ATM";
+        String RdSql="SELECT balance FROM atm where user_id=?";
         PreparedStatement ps2 = con.prepareStatement(RdSql);
+        ps2.setInt(1, userid);
         ResultSet j = ps2.executeQuery();
         if(j.next()){
             bal=j.getInt("Balance");
         }
 
         if(bal>=amount){//db se balance ko bula ke usse minus karwana padega
-            String upSql="UPDATE ATM SET Balance = Balance-?";
+            PreparedStatement ps3 = con.prepareStatement("select user_id from atm where balance=?");
+            ps3.setInt(1, bal);
+            ResultSet rs =ps3.executeQuery();
+            if(rs.next()){
+                userid=rs.getInt("user_id");
+            }
+            String upSql="UPDATE atm SET balance = balance-? where user_id=?";
             PreparedStatement ps1 = con.prepareStatement(upSql);
             ps1.setInt(1, amount);
+            ps1.setInt(2, userid);
             int i = ps1.executeUpdate();
+            if(i>0){
+                System.out.println("collect your money");
+            }
+            else System.out.println("Failed");
         }
         else{
             System.out.println("Insufficent balance");
