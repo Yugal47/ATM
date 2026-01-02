@@ -7,10 +7,13 @@ public class MainMenu {
     public void mainMenu() throws Exception{
         while(true){
         Scanner sc = new Scanner(System.in);
+        System.out.println("========== ATM ===========");
         System.out.println("1. Withdraw");
         System.out.println("2. Deposit");
         System.out.println("3. Check Balance");
         System.out.println("4. Exit");
+        System.out.println("==========================");
+        System.out.print("Enter your choice:");
         menu=sc.nextInt();
         switch(menu){
             case 1:
@@ -35,15 +38,5 @@ public class MainMenu {
         if(menu==4) break;
     }
 }
-    public static void main(String[] args)  {
-    try {
-        new MainMenu().mainMenu();
-    } catch (Exception e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
-    System.out.println("done");
-       
 
-    }
 }

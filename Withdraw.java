@@ -8,11 +8,12 @@ public class Withdraw {
     Login log =new Login();
     public void debit() throws Exception{
         Scanner sc =new Scanner(System.in);
-        System.out.println("Enter Amout:");
+        System.out.println("--------------------------");
+        System.out.print("Enter Amout :");
         int amount = sc.nextInt();
+        System.out.println("--------------------------");
         int bal=0;
         int userid=log.getUserid();
-        System.out.println(userid);
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
         String RdSql="SELECT balance FROM atm where user_id=?";
@@ -36,12 +37,14 @@ public class Withdraw {
             ps1.setInt(2, userid);
             int i = ps1.executeUpdate();
             if(i>0){
-                System.out.println("collect your money");
+                System.out.println("Collect Your Money");
+                System.out.println("--------------------------");
             }
             else System.out.println("Failed");
         }
         else{
             System.out.println("Insufficent balance");
+            System.out.println("--------------------------");
         }
 
     }

@@ -21,10 +21,14 @@ public class Login {
         
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");
-        System.out.println("1. Login");
-        System.out.println("2. Register");
-        System.out.print("Enter your choice: ");
+        System.out.println("+++++++++ Welcome +++++++++");
+        System.out.println("+      1. To Login        +");
+        System.out.println("+      2. To Register     +");
+        System.out.println("+++++++++++++++++++++++++++");
+        System.out.println();
+        System.out.print("Enter your choice :");
         int choice = sc.nextInt();
+        System.out.println();
         
         String Uname = "";
         String Pin = "";
@@ -38,7 +42,6 @@ public class Login {
             ResultSet rs1=ps3.executeQuery();
             if(rs1.next()){
                 userid=rs1.getInt("user_id");
-                // System.out.println("Your userid is:"+userid);
             }
             System.out.print("Enter your Pin: ");
             Pin = sc.next();
@@ -54,7 +57,6 @@ public class Login {
 
             if (rs.next()) {
                 MainMenu menu = new MainMenu();
-                System.out.println(userid);
                 menu.mainMenu();
                 
             } else {
@@ -84,6 +86,7 @@ public class Login {
             if(rs1.next()){
                 userid=rs1.getInt("user_id");
                 System.out.println("Your userid is:"+userid);
+                System.out.println("Use this ID to log-in next time");
             }
             
             
