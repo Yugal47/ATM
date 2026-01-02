@@ -13,14 +13,15 @@ public class CheckBal {
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
         int balance=0;
         int userid=log.getUserid();
-        System.out.println(userid);
 
         PreparedStatement ps =con.prepareStatement("SELECT balance FROM atm where user_id=?");
         ps.setInt(1, userid);
         ResultSet rs = ps.executeQuery();
         if(rs.next()){
             balance=rs.getInt("balance");
-            System.out.println(balance);
+            System.out.println("--------------------------");
+            System.out.println("Your Balance is: "+balance);
+            System.out.println("--------------------------");
         }
         con.close();
         ps.close();
