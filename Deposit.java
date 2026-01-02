@@ -7,13 +7,15 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class Deposit {
+    Login log =new Login();
     public void deposit() throws Exception{
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter User Id:");
-        int userid= sc.nextInt();//-->connects with that table
+        int userid= log.getUserid();//-->connects with that table
+        System.out.println(userid);
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
-        PreparedStatement ps1= con.prepareStatement("select * from users where user_id = ?");
+        PreparedStatement ps1= con.prepareStatement("select balance from atm where user_id = ?");
         ps1.setInt(1, userid);
         ResultSet rs =ps1.executeQuery();
         if(rs.next()){
