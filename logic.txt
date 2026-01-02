@@ -31,3 +31,5 @@ when user enters name and password db should get connected to that account. and 
 2- userid --we have, connect with database.
 
 userid--
+
+password change feature
