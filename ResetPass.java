@@ -31,13 +31,4 @@ public class ResetPass {
         }
  
     }
-    public static void main(String[] args) {
-        ResetPass res = new ResetPass();
-        try {
-            res.passwordReset();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
 }

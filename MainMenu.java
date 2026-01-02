@@ -11,7 +11,8 @@ public class MainMenu {
         System.out.println("1. Withdraw");
         System.out.println("2. Deposit");
         System.out.println("3. Check Balance");
-        System.out.println("4. Exit");
+        System.out.println("4. Reset password");
+        System.out.println("5. Exit");
         System.out.println("==========================");
         System.out.print("Enter your choice:");
         menu=sc.nextInt();
@@ -29,13 +30,16 @@ public class MainMenu {
                 cb.checkBal();
                 break;
             case 4:
+                ResetPass res=new ResetPass();
+                res.passwordReset();
+            case 5:
                 System.out.println("Exit");
                 
                 break;
             default:
                 System.out.println("Invalid option");
         }
-        if(menu==4) break;
+        if(menu==5) break;
     }
 }
 
