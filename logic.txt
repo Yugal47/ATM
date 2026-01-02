@@ -33,3 +33,4 @@ when user enters name and password db should get connected to that account. and 
 userid--
 
 password change feature
+view last 5 transactions
