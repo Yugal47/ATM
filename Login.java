@@ -74,12 +74,22 @@ public class Login {
             System.out.print("Enter your password: ");
             Pin = sc.next();
             
-            String regNameTest="INSERT INTO users (username, password) VALUES (?, ?)";
-            PreparedStatement ps2 = con.prepareStatement(regNameTest);
-            
-            ps2.setString(1, Uname);
-            ps2.setString(2, hashPassword(Pin));
-            int reg1 = ps2.executeUpdate();
+            int PasLen=Pin.length();
+            if(PasLen>8){
+                String regNameTest="INSERT INTO users (username, password) VALUES (?, ?)";
+                PreparedStatement ps2 = con.prepareStatement(regNameTest);
+                ps2.setString(1, Uname);
+                ps2.setString(2, hashPassword(Pin));
+                int reg1 = ps2.executeUpdate();
+                if (reg1 > 0) {
+                    System.out.println("User Registered Successfully");
+                } else {
+                    System.out.println("Failed to Register");
+                }
+            }
+            else{
+                System.out.println("Try again!, password can't be less than 8 characters");
+            }
             PreparedStatement ps1 =con.prepareStatement("select user_id from users where username=?");
             ps1.setString(1, Uname);
             ResultSet rs1=ps1.executeQuery();
@@ -90,11 +100,6 @@ public class Login {
             }
             
             
-            if (reg1 > 0) {
-                System.out.println("User Registered Successfully");
-            } else {
-                System.out.println("Failed to Register");
-            }
             
             ps1.close();
             
