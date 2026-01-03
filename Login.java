@@ -60,7 +60,7 @@ public class Login {
                 menu.mainMenu();
                 
             } else {
-                System.out.println("Failed! Try again.");
+                System.out.println("Credentials didn't matched!!");
             }
             
             rs.close();
