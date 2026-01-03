@@ -23,6 +23,7 @@ public class CheckBal {
             System.out.println("Your Balance is: "+balance);
             System.out.println("--------------------------");
         }
+        else System.out.println("Your balance is :0");
         con.close();
         ps.close();
     }
