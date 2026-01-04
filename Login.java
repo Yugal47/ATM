@@ -86,6 +86,7 @@ public class Login {
                 } else {
                     System.out.println("Failed to Register");
                 }
+                ps2.close();
             }
             else{
                 System.out.println("Try again!, password can't be less than 8 characters");
@@ -98,9 +99,6 @@ public class Login {
                 System.out.println("Your userid is:"+userid);
                 System.out.println("Use this ID to log-in next time");
             }
-            
-            
-            
             ps1.close();
             
         } else {
