@@ -41,11 +41,16 @@ public class Withdraw {
                 System.out.println("--------------------------");
             }
             else System.out.println("Failed");
+            ps3.close();
+            con.close();
+            ps1.close();
         }
         else{
             System.out.println("Insufficent balance");
             System.out.println("--------------------------");
         }
+        con.close();
+        ps2.close();
 
     }
 }

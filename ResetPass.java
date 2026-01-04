@@ -31,7 +31,10 @@ public class ResetPass {
                 System.out.println("Changed");
             }
             else System.out.println("failed");
+            ps1.close();
+            ps2.close();
         }
+        con.close();
  
     }
 }
