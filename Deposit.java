@@ -35,6 +35,9 @@ public class Deposit {
                 System.out.println("Failed to Deposit");
                 System.out.println("--------------------------");
             }
+            con.close();
+            ps.close();
+            ps1.close();
         }
     }
 }
