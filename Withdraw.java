@@ -24,13 +24,7 @@ public class Withdraw {
             bal=j.getInt("Balance");
         }
 
-        if(bal>=amount){//db se balance ko bula ke usse minus karwana padega
-            PreparedStatement ps3 = con.prepareStatement("select user_id from atm where balance=?");
-            ps3.setInt(1, bal);
-            ResultSet rs =ps3.executeQuery();
-            if(rs.next()){
-                userid=rs.getInt("user_id");
-            }
+        if(bal>=amount){
             String upSql="UPDATE atm SET balance = balance-? where user_id=?";
             PreparedStatement ps1 = con.prepareStatement(upSql);
             ps1.setInt(1, amount);
@@ -41,9 +35,9 @@ public class Withdraw {
                 System.out.println("--------------------------");
             }
             else System.out.println("Failed");
-            ps3.close();
             con.close();
             ps1.close();
+            sc.close();
         }
         else{
             System.out.println("Insufficent balance");
