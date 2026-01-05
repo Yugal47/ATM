@@ -3,6 +3,8 @@ Register users maintain balance, withdraw, deposit, check balance and many more 
 
 you need to add first a folder named "com" then inside com "ATM" then clone all the thing inside com/ATM/ 
 
+For db you are supposed to download jar file from internet and place it into your java project's lib folder. create a database named test, create a table named users and atm.
+
 file structure
 com
  |__ ATM
