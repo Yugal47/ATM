@@ -1,5 +1,5 @@
 # ATM
-Register users maintain balance, withdraw, deposit, check balance and many more to features awaiting to be explore by you. Try now..
+Register users maintain balance, withdraw, deposit, check balance and many more features awaiting to be explore by you. Try now..
 
 you need to add first a folder named "com" then inside com "ATM" then clone all the thing inside com/ATM/ 
 
