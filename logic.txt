@@ -1,2 +1,0 @@
-password change feature
-view last 5 transactions
