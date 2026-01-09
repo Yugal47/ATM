@@ -29,15 +29,6 @@ public class OpenAccount {
             System.out.println("Invalid choice. Please try again.");
     }
     }
-    class SavingsAccount extends OpenAccount {
-        Scanner sc = new Scanner(System.in);
-        String name;
-        public void accountDetails() {
-            System.out.println(" Enter your name: ");
-            name = sc.nextLine();
-            System.out.println("Account created successfully for " + name);
-        }
-    }
     class BusinessAccount extends OpenAccount {
         Scanner sc = new Scanner(System.in);
         String name;
