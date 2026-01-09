@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class OpenAccount {
     Scanner sc = new Scanner(System.in);
     int choice;
-    public void options(){
+    public void options() throws Exception{
         System.out.println("Select the type of account you want to open:");
         System.out.println("1. Savings Account");
         System.out.println("2. Business Account");
@@ -42,6 +42,10 @@ public class OpenAccount {
 
     public static void main(String[] args) {
         OpenAccount op = new OpenAccount();
-        op .options();
+        try {
+            op.options();
+        } catch (Exception e) {
+            e.printStackTrace();
     }
+}
 }
