@@ -1,6 +1,8 @@
 package com.BankApp;
 
 import java.util.Scanner;
+
+
 public class OpenAccount {
     Scanner sc = new Scanner(System.in);
     int choice;
@@ -10,12 +12,15 @@ public class OpenAccount {
         System.out.println("2. Business Account");
         System.out.println("3. Exit");
         System.out.println("Enter your choice:");
+        //create a custom exception for invalid choice like InputMismatchException
         choice = sc.nextInt();
     switch (choice){
         case 1:
             System.out.println("You have selected Savings Account.");
-            SavingsAccount sa = new SavingsAccount();
-            sa.accountDetails();
+            // SavingsAccount sa = new SavingsAccount();
+            PersonalSavings p = new PersonalSavings();
+            p.accountDetails();
+            p.personalsavings();
             break;
         case 2:
             BusinessAccount ba = new BusinessAccount();
