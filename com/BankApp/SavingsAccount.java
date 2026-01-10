@@ -34,9 +34,20 @@ public class SavingsAccount {
     if(rs1.next()){
         userid=rs1.getInt("user_id");
         // System.out.println(userid);
+        }
     }
+    public void displaySavingsAccountOptions() {
+        Scanner sc = new Scanner(System.in);
+        int ch=sc.nextInt();
+        System.out.println(" Savings Account Types: ");
+        System.out.println(" 1. Personal Savings Account ");
+        System.out.println(" 2. Vacation Savings Account ");
+        System.out.println(" 3. Emergency Savings Account ");
+        System.out.println(" 4. New Car Savings Account ");
+        System.out.print(" Choose the type of Savings Account you want to deposit into (1-4): ");
+    
 }
-}
+
 class PersonalSavings extends SavingsAccount {
     
     public void personalsavings() throws Exception {
