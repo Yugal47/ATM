@@ -59,9 +59,9 @@ class PersonalSavings extends SavingsAccount {
             }
             else{
                 System.out.println("Deposit failed. Please try again.");
+            }
         }
     }
-}
 }
 class VacationSavings extends SavingsAccount {
     public void vacationsavings() throws Exception {
@@ -84,6 +84,7 @@ class VacationSavings extends SavingsAccount {
             }
             else{
                 System.out.println("Deposit failed. Please try again.");
+            }
         }
     }
     
@@ -109,6 +110,7 @@ class EmergencySavings extends SavingsAccount {
             }
             else{
                 System.out.println("Deposit failed. Please try again.");
+            }
         }
     }
 }
