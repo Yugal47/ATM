@@ -89,8 +89,28 @@ class VacationSavings extends SavingsAccount {
     
 }
 class EmergencySavings extends SavingsAccount {
-    
-    
+    public void emergencysavings() throws Exception {
+        Scanner sc = new Scanner(System.in);
+        userid =getUserid();
+        int amount;
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
+        PreparedStatement ps1 = con.prepareStatement("select * from user where user_id =?");
+        ps1.setInt(1, userid);
+        ResultSet rs1=ps1.executeQuery(); 
+        if(rs1.next()){
+            System.out.println(" Enter the amount you want to deposit in Emergency Savings Account: ");
+            amount = sc.nextInt();
+            PreparedStatement ps2 = con.prepareStatement("INSERT INTO savingsAccount (user_id,EmergencySavings) VALUES (?,?)  ON DUPLICATE KEY UPDATE EmergencySavings = EmergencySavings + values(EmergencySavings);");
+            ps2.setInt(1, userid);
+            ps2.setInt(2, amount);
+            int i = ps2.executeUpdate();
+            if(i>0){
+                System.out.println("Successfully deposited " + amount + " in Emergency Savings Account.");
+            }
+            else{
+                System.out.println("Deposit failed. Please try again.");
+        }
+    }
 }
 class NewCarSavings extends SavingsAccount {
     
