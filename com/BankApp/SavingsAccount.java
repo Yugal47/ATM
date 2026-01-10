@@ -34,18 +34,56 @@ public class SavingsAccount {
     if(rs1.next()){
         userid=rs1.getInt("user_id");
         // System.out.println(userid);
+        displaySavingsAccountOptions();
         }
     }
     public void displaySavingsAccountOptions() {
         Scanner sc = new Scanner(System.in);
-        int ch=sc.nextInt();
         System.out.println(" Savings Account Types: ");
         System.out.println(" 1. Personal Savings Account ");
         System.out.println(" 2. Vacation Savings Account ");
         System.out.println(" 3. Emergency Savings Account ");
         System.out.println(" 4. New Car Savings Account ");
         System.out.print(" Choose the type of Savings Account you want to deposit into (1-4): ");
-    
+        int ch=sc.nextInt();
+    switch(ch) {
+        case 1:
+            PersonalSavings ps = new PersonalSavings();
+            try {
+                ps.personalsavings();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            break;
+        case 2:
+            VacationSavings vs = new VacationSavings();
+            try {
+                vs.vacationsavings();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            break;
+        case 3:
+            EmergencySavings es = new EmergencySavings();
+            try {
+                es.emergencysavings();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            break;
+        case 4:
+            NewCarSavings ncs = new NewCarSavings();
+            try {
+                ncs.newcarsavings();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            break;
+        default:
+            System.out.println(" Invalid choice. Please select a valid option (1-4).");
+            break;
+        }
+    }
 }
 
 class PersonalSavings extends SavingsAccount {
