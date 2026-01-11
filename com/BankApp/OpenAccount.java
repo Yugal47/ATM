@@ -17,12 +17,12 @@ public class OpenAccount {
     switch (choice){
         case 1:
             System.out.println("You have selected Savings Account.");
-            // SavingsAccount sa = new SavingsAccount();
-            // sa.accountDetails();
-            PersonalSavings ps = new PersonalSavings();
-            ps.accountDetails();
-            ps.personalSavings();
-            // sa.displaySavingsAccountOptions();
+            SavingsAccount sa = new SavingsAccount();
+            sa.accountDetails();
+            // PersonalSavings ps = new PersonalSavings();
+            // ps.accountDetails();
+            // ps.personalSavings();
+            sa.displaySavingsAccountOptions();
             break;
         case 2:
             BusinessAccount ba = new BusinessAccount();
