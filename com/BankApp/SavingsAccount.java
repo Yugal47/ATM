@@ -40,7 +40,8 @@ public class SavingsAccount {
         if (rs1.next()) {
             userid = rs1.getInt("user_id");
             // System.out.println(userid);
-            displaySavingsAccountOptions();
+            // displaySavingsAccountOptions();
+
         }
     }
 
@@ -53,33 +54,33 @@ public class SavingsAccount {
         System.out.println(" 4. New Car Savings Account ");
         System.out.print(" Choose the type of Savings Account you want to deposit into (1-4): ");
         int ch = sc.nextInt();
+        // int ch = 1;
         switch (ch) {
             case 1:
-                PersonalSavings ps = new PersonalSavings();
-                ps.personalsavings();
+                SavingsAccount ps = new PersonalSavings();
+                ps.accountDetails();
+                accountDetails();
                 break;
             case 2:
-                VacationSavings vs = new VacationSavings();
-                vs.vacationsavings();
+                accountDetails();
                 break;
             case 3:
-                EmergencySavings es = new EmergencySavings();
-                es.emergencysavings();
+                accountDetails();
                 break;
             case 4:
-                NewCarSavings ncs = new NewCarSavings();
-                ncs.newcarsavings();
+                accountDetails();
                 break;
             default:
                 System.out.println(" Invalid choice. Please try again.");
+                break;
             }
     }
     
 }
 
 class PersonalSavings extends SavingsAccount {
-
-    public void personalsavings() throws Exception {
+    // @Override
+    public void personalSavings() throws Exception {
         Scanner sc = new Scanner(System.in);
         userid = getUserid();
         int amount;
@@ -105,7 +106,8 @@ class PersonalSavings extends SavingsAccount {
 }
 
 class VacationSavings extends SavingsAccount {
-    public void vacationsavings() throws Exception {
+    // @Override
+    public void vacationSavings() throws Exception {
         Scanner sc = new Scanner(System.in);
         userid = getUserid();
         int amount;
@@ -132,7 +134,7 @@ class VacationSavings extends SavingsAccount {
 }
 
 class EmergencySavings extends SavingsAccount {
-    public void emergencysavings() throws Exception {
+    public void accountDetails() throws Exception {
         Scanner sc = new Scanner(System.in);
         userid = getUserid();
         int amount;
@@ -158,7 +160,7 @@ class EmergencySavings extends SavingsAccount {
 }
 
 class NewCarSavings extends SavingsAccount {
-    public void newcarsavings() throws Exception {
+    public void accountDetails() throws Exception {
         Scanner sc = new Scanner(System.in);
         userid = getUserid();
         int amount;
