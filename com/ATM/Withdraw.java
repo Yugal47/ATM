@@ -37,7 +37,6 @@ public class Withdraw {
             else System.out.println("Failed");
             con.close();
             ps1.close();
-            sc.close();
         }
         else{
             System.out.println("Insufficent balance");
