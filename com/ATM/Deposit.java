@@ -21,6 +21,10 @@ public class Deposit {
             System.out.print("Enter amount :");
             int amount= sc.nextInt();
             System.out.println("--------------------------");
+            if(amount<=0){
+                System.out.println("Invalid amount. Please enter a positive value.");
+                return;
+            }
             PreparedStatement ps = con.prepareStatement("INSERT INTO atm (user_id, balance) VALUES (?, ?) ON DUPLICATE KEY UPDATE balance = balance + VALUES(balance);");
             ps.setInt(1,userid);
             ps.setInt(2,amount);
