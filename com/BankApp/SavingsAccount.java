@@ -46,6 +46,7 @@ public class SavingsAccount {
 
     public void displaySavingsAccountOptions() throws Exception{
         Scanner sc = new Scanner(System.in);
+        accountDetails();
         System.out.println(" Savings Account Types: ");
         System.out.println(" 1. Personal Savings Account ");
         System.out.println(" 2. Vacation Savings Account ");
@@ -56,21 +57,16 @@ public class SavingsAccount {
         // int ch = 1;
         switch (ch) {
             case 1:
-                accountDetails();
-                PersonalSavings ps = new PersonalSavings(); 
-                ps.personalSavings();
+                new PersonalSavings(userid).personalSavings();
                 break;
             case 2:
-                VacationSavings vs = new VacationSavings();
-                vs.vacationSavings();
+                new VacationSavings(userid).vacationSavings();
                 break;
             case 3:
-                EmergencySavings es = new EmergencySavings();
-                es.emergencySavings();
+                new EmergencySavings(userid).emergencySavings();
                 break;
             case 4:
-                NewCarSavings ncs = new NewCarSavings();
-                ncs.newCarSavings();
+                new NewCarSavings(userid).newCarSavings();
                 break;
             default:
                 System.out.println(" Invalid choice. Please try again.");
@@ -81,8 +77,10 @@ public class SavingsAccount {
 }
 
 class PersonalSavings{
-    SavingsAccount sa = new SavingsAccount();
-    int userid=sa.getUserid();
+    int userid;
+    PersonalSavings(int userid) {
+        this.userid = userid;
+    }
     public void personalSavings() throws Exception {
         Scanner sc = new Scanner(System.in);
         int amount;
@@ -91,7 +89,7 @@ class PersonalSavings{
         ps1.setInt(1, userid);
         ResultSet rs1 = ps1.executeQuery();
         if (rs1.next()) {
-            System.out.println(" Enter the amount you want to deposit in Personal Savings Account: ");
+            System.out.println("Enter amount: ");
             amount = sc.nextInt();
             PreparedStatement ps2 = con.prepareStatement(
                     "INSERT INTO savingsAccount (user_id,PersonalSavings) VALUES (?,?)  ON DUPLICATE KEY UPDATE PersonalSavings = PersonalSavings + values(PersonalSavings);");
@@ -108,8 +106,10 @@ class PersonalSavings{
 }
 
 class VacationSavings {
-    SavingsAccount sa = new SavingsAccount();
-    int userid=sa.getUserid();
+    int userid;
+    VacationSavings(int userid) {
+        this.userid = userid;
+    }
     // @Override
     public void vacationSavings() throws Exception {
         Scanner sc = new Scanner(System.in);
@@ -140,8 +140,10 @@ class VacationSavings {
 }
 
 class EmergencySavings {
-    SavingsAccount sa = new SavingsAccount();
-    int userid=sa.getUserid();
+    int userid;
+    EmergencySavings(int userid) {
+        this.userid = userid;
+    }
     public void emergencySavings() throws Exception {
         Scanner sc = new Scanner(System.in);
         int amount;
@@ -166,10 +168,13 @@ class EmergencySavings {
     }
 }
 
-class NewCarSavings extends SavingsAccount {
+class NewCarSavings {
+    int userid;
+    NewCarSavings(int userid) {
+        this.userid = userid;
+    }
     public void newCarSavings() throws Exception {
         Scanner sc = new Scanner(System.in);
-        userid = getUserid();
         int amount;
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");
         PreparedStatement ps1 = con.prepareStatement("select * from user where user_id =?");
