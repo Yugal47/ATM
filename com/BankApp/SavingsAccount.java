@@ -91,6 +91,10 @@ class PersonalSavings{
         if (rs1.next()) {
             System.out.println("Enter amount: ");
             amount = sc.nextInt();
+            if(amount<=0){
+                System.out.println("Invalid amount. Please enter a positive value.");
+                return;
+            }
             PreparedStatement ps2 = con.prepareStatement(
                     "INSERT INTO savingsAccount (user_id,PersonalSavings) VALUES (?,?)  ON DUPLICATE KEY UPDATE PersonalSavings = PersonalSavings + values(PersonalSavings);");
             ps2.setInt(1, userid);
