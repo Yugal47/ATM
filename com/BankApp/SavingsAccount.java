@@ -162,6 +162,10 @@ class EmergencySavings {
         if (rs1.next()) {
             System.out.println(" Enter the amount you want to deposit in Emergency Savings Account: ");
             amount = sc.nextInt();
+            if(amount<=0){
+                System.out.println("Invalid amount. Please enter a positive value.");
+                return;
+            }
             PreparedStatement ps2 = con.prepareStatement(
                     "INSERT INTO savingsAccount (user_id,EmergencySavings) VALUES (?,?)  ON DUPLICATE KEY UPDATE EmergencySavings = EmergencySavings + values(EmergencySavings);");
             ps2.setInt(1, userid);
