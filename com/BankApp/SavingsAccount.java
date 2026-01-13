@@ -125,6 +125,10 @@ class VacationSavings {
         if (rs1.next()) {
             System.out.println(" Enter the amount you want to deposit in Vacation Savings Account: ");
             amount = sc.nextInt();
+            if (amount<=0){
+                System.out.println("Invalid amount. Please enter a positive value.");
+                return;
+            }
             PreparedStatement ps2 = con.prepareStatement(
                     "INSERT INTO savingsAccount (user_id,VacationSavings) VALUES (?,?)  ON DUPLICATE KEY UPDATE VacationSavings = VacationSavings + values(VacationSavings);");
             ps2.setInt(1, userid);
