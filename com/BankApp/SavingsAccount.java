@@ -35,12 +35,9 @@ public class SavingsAccount {
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");
         PreparedStatement ps1 = con.prepareStatement("select user_id from user where Name =?");
         ps1.setString(1, name);
-        // int i =ps1.executeUpdate();
         ResultSet rs1 = ps1.executeQuery();
         if (rs1.next()) {
-            userid = rs1.getInt("user_id");
-            // System.out.println(userid);
-            
+            userid = rs1.getInt("user_id");            
         }
     }
 
