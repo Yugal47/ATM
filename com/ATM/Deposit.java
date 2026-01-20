@@ -22,6 +22,7 @@ public class Deposit {
             int amount= sc.nextInt();
             System.out.println("--------------------------");
             if(amount>=100){
+                if(amount%5==0&&amount%5==5){
             PreparedStatement ps = con.prepareStatement("INSERT INTO atm (user_id, balance) VALUES (?, ?) ON DUPLICATE KEY UPDATE balance = balance + VALUES(balance);");
             ps.setInt(1,userid);
             ps.setInt(2,amount);
@@ -37,6 +38,9 @@ public class Deposit {
                 System.out.println("--------------------------");
             }
         }
+        System.out.println("You can deposit multiple of 50 and 100");
+        }
+        System.out.println("Minimum amount to be deposited is 100");
             // con.close();
             // ps.close();
             // ps1.close();
