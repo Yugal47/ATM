@@ -37,7 +37,7 @@ public class MainMenu {
                 
                 break;
             default:
-                System.out.println("Invalid option");
+                System.out.println("Invalid option! Please choose from above menu.");
         }
         if(menu==5) break;
     }
