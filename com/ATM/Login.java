@@ -102,7 +102,7 @@ public class Login {
             ps1.close();
             
         } else {
-            System.out.println("Invalid Option!! Please check what it is asking for.");
+            System.out.println("Invalid Option!! Please select your choice!.");
         }
         
         con.close();
